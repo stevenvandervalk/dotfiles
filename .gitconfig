@@ -1,6 +1,6 @@
 [user]
-  name = Jeff Geerling
-  email = geerlingguy@mac.com
+  name = Steve Vandervalk
+  email = git@stevevandervalk.net
 [core]
   editor = vi
   excludesfile = ~/.gitignore
@@ -11,7 +11,7 @@
   interactive = auto
   status = auto
 [web]
-  browser = google-chrome
+  browser = firefox
 [credential]
   helper = osxkeychain
 [push]

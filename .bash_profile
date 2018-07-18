@@ -1,11 +1,11 @@
 #
 # .bash_profile
 #
-# @author Jeff Geerling
+# @author Steve Vandervalk
 # @see .inputrc
 #
 
-# Nicer prompt.
+# Nicer bash prompt
 export PS1="\[\e[0;32m\]\]\[\] \[\e[1;32m\]\]\t \[\e[0;2m\]\]\w \[\e[0m\]\]\[$\] "
 
 # Use colors.
@@ -13,7 +13,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # Custom $PATH with extra locations.
-export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/usr/local/git/bin:$HOME/.composer/vendor/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/usr/local/git/bin:$PATH
 
 # Include alias file (if present) containing aliases for ssh, etc.
 if [ -f ~/.bash_aliases ]
@@ -68,9 +68,6 @@ brew_prefix='/usr/local'
 if [ -f $brew_prefix/etc/bash_completion ]; then
   . $brew_prefix/etc/bash_completion
 fi
-
-# Use brew-installed PHP binaries.
-export PATH="$brew_prefix/opt/php70/bin:$PATH"
 
 # Use nvm.
 # export NVM_DIR="$HOME/.nvm"
@@ -131,17 +128,3 @@ prod_command_trap () {
 shopt -s extdebug
 trap prod_command_trap DEBUG
 
-function blt() {
-  if [ "`git rev-parse --show-cdup 2> /dev/null`" != "" ]; then
-    GIT_ROOT=$(git rev-parse --show-cdup)
-  else
-    GIT_ROOT="."
-  fi
-
-  if [ -f "$GIT_ROOT/vendor/bin/blt" ]; then
-    $GIT_ROOT/vendor/bin/blt "$@"
-  else
-    echo "You must run this command from within a BLT-generated project repository."
-    return 1
-  fi
-}
